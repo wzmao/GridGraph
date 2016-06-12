@@ -61,6 +61,9 @@ public:
 	void set_bit(size_t i) {
 		__sync_fetch_and_or(data+WORD_OFFSET(i), 1ul<<BIT_OFFSET(i));
 	}
+	void unset_bit(size_t i){
+		__sync_fetch_and_and(data+WORD_OFFSET(i), ~(1ul<<BIT_OFFSET(i)));
+	}
 };
 
 #endif
